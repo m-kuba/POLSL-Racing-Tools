@@ -2,8 +2,6 @@
 
 
 
-#### AoA Tool:
-
 **Simple tool for wing AoA variants generation.**
 
 
