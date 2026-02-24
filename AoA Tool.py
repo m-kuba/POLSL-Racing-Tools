@@ -12,9 +12,11 @@ swSaveAsOptions_Copy = 2
 
 def run_aero_sweep():
     #configuration
-    angleName = "AoA_Rear_Wing@AirfoilSketch"
-    baseFileName = "GT3Wing.sldprt"
-    newAngles = [3.0, 6.0, 10.0, 15.0]
+    angleName = input ("Enter base angle name: ")
+    baseFileName = input ("Enter base file name: ")
+    clenFileName = baseFileName[:-7]
+    inputAngles = input("Enter new angles separated by space: ").split()
+    newAngles = [float(angle) for angle in inputAngles]
 
     workingDirectory = os.getcwd()
     baseDirectory = os.path.join(workingDirectory, baseFileName)
@@ -51,7 +53,7 @@ def run_aero_sweep():
             swDimension.SystemValue = angleRad
             Model.EditRebuild3
 
-            newFileName = f"GT3Wing_{angleDeg}deg.sldprt"
+            newFileName = f"{clenFileName}_{angleDeg}deg.sldprt"
             saveDirectory = os.path.join(workingDirectory, newFileName)
             saveOptions = swSaveAsOptions_Silent + swSaveAsOptions_Copy
 
